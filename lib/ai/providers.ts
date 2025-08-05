@@ -16,24 +16,24 @@ export const myProvider = isTestEnvironment
   ? customProvider({
       languageModels: {
         'chat-model': chatModel,
-        //'chat-model-reasoning': reasoningModel,
-        //'title-model': titleModel,
-        //'artifact-model': artifactModel,
+        'chat-model-reasoning': reasoningModel,
+        'title-model': titleModel,
+        'artifact-model': artifactModel,
       },
     })
   : customProvider({
       languageModels: {
         'chat-model': openai('gpt-3.5-turbo'),
-        //'chat-model-reasoning': wrapLanguageModel({
-        //  model: openai('gpt-4'),
-        //  middleware: extractReasoningMiddleware({ tagName: 'think' }),
-        //}),
-        //'title-model': openai('gpt-3.5-turbo'),
-        //'artifact-model': openai('gpt-3.5-turbo'),
+        'chat-model-reasoning': wrapLanguageModel({
+          model: openai('gpt-4'),
+          middleware: extractReasoningMiddleware({ tagName: 'think' }),
+        }),
+        'title-model': openai('gpt-3.5-turbo'),
+        'artifact-model': openai('gpt-3.5-turbo'),
       },
-      /*imageModels: {
+      imageModels: {
         'small-model': openai.imageModel('dall-e-3'),
-      },*/
+      },
     });
 
 
